@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+
+    <title>Cotton Boll Disease Classification</title>
+
+    <style>
+          * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .border img {
+            border-radius: 15px;
+            border: 2px solid black;
+        }
+        
+        
+
+        .card{
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            display: inline-block;
+            height: 400px;
+            width: 400px;
+            
+            
+        }
+ 
+        .card-style {
+            display: block;
+            
+      
+            
+ 
+        }
+ 
+        .content {
+            padding: 15px;
+            color:black;
+            background-color: rgb(153, 156, 150);
+            /* font-size: 1rem; */
+        }
+ 
+        @media (max-width: 430px) and (min-width: 200px) {
+ 
+            .contents {
+                font-size: 0.6rem;
+                color: chartreuse;
+            }
+ 
+            .content-h1 {
+ 
+                font-size: 1rem;
+            }
+        }
+ 
+        .border img {
+            border-radius: 15px;
+            border: 2px solid #ffbd39;
+        }
+        .details {
+             opacity: 0; /* make the element invisible by default */
+             animation: fade-in 1s ease-in-out 3s forwards; /* apply the fade-in animation with a duration of 1 second, an easing function of ease-in-out, a delay of 3 seconds, and a fill mode of forwards */
+        }
+
+    @keyframes fade-in {
+        from {
+             opacity: 0; /* start from invisible */
+        }
+        to {
+             opacity: 3; /* end at fully visible */
+    }
+       
+}
+
+    </style>
+</head>
+
+<body background="{{url_for('static',filename = 'images/back.png')}}">
+
+
+
+    <div>
+        <h1 style="text-align:center;font-size:4rem">Predicted Disease and Remedies</h1>
+    </div>
+
+   <br>
+   <br>
+
+
+    <div class="container my-2">
+        <div class="row mb-5">
+
+            <div class="col-sm" style="margin-bottom: 23px;">
+                <span class="border border-primary">
+                    <img src="{{url_for('static',filename = 'images/Bollworm(8).jpg' )}}" alt="User Image" style="width:500px;height:500px;">
+                    
+
+                </span>
+            </div>
+
+            <div class="col-sm">
+
+                <div>
+                    <h1 style="padding: 15px; background-color: white; color: red;"
+                        class="text-center mb-5 content-h1 rounded">
+                        {{pred_output}} </h1>
+                </div>
+                <div class="details">
+                    <h6>
+                        Bollworm(Helicoverpa armigera)  is a distructive pest that attacks and feed on  the cotton boll causing significant yield losses.</br></br>
+                    </h6>
+                    <h4><b> Treatment : </b> </h4>
+                    <ul>
+                        <li>using resistant varieties. </li>
+                        <li>applying insecticides. </li>
+                        <li>practicing crop rotation.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card ">
+            <div class="card-body text-center card-style">
+                <h3>Recommended Products</h3>
+                <img style="border-radius: 10px; height: 200px;" class="img-fluid" src="actara.png" alt="">
+                <h5 style="color:black;">Dose: 60-80 gm/Acre</h5>
+                <p style="color: black;">Actara delivers fast elimination of sucking and chewing pest. Actara quickly penetrates the leaf's surface and eliminates pests within 24 hours while also providing residual control.</p>
+                
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

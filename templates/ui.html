@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cotton Disease Classification</title>
+    <style>
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .image-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        width: 500px;
+        height: 500px;
+        border: 2px solid black;
+        margin-left: 450px;
+      }
+
+      #image-preview {
+        max-width: 100%;
+        max-height: 500px;
+        display: none;
+      }
+
+      #video-preview {
+        max-width: 100%;
+        max-height: 500px;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        
+        
+        border: none;
+        color: #04AA6D;
+        
+      }
+
+      button {
+        font-size: 20px;
+        margin-right: 20px;
+        color: white;
+        background-color: #04AA6D;
+        border: none;
+        border-radius: 5%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cotton Boll Disease Classifier</h1>
+    <div class="image-container">
+      <img id="image-preview" src="" alt="Preview Image">
+      <video id="video-preview" autoplay playsinline></video>
+    </div>
+    <div class="buttons">
+      <button id="choose-image">upload Image</button>
+      <button id="take-photo">Take Photo</button>
+      <button id="predict">Predict</button>
+    </div>
+    <script>
+      // Get HTML elements
+      const chooseImageBtn = document.getElementById('choose-image');
+      const takePhotoBtn = document.getElementById('take-photo');
+      const predictBtn = document.getElementById('predict');
+      const imagePreview = document.getElementById('image-preview');
+      const videoPreview = document.getElementById('video-preview');
+
+      // Choose image from device
+      chooseImageBtn.addEventListener('click', () => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*';
+        input.onchange = (event) => {
+          const file = event.target.files[0];
+          const url = URL.createObjectURL(file);
+          imagePreview.src = url;
+          imagePreview.style.display = 'block';
+          videoPreview.style.display = 'none';
+        };
+        input.click();
+      });
+
+      // Take photo using camera
+      takePhotoBtn.addEventListener('click', async () => {
+        try {
+          const constraints = { video: true };
+          const stream = await navigator.mediaDevices.getUserMedia(constraints);
+          videoPreview.srcObject = stream;
+          videoPreview.style.display = 'block';
+          imagePreview.style.display = 'none';
+        } catch (error) {
+          console.error(error);
+        }
+      });
+
+      // Predict image
+      predictBtn.addEventListener('click', () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = videoPreview.videoWidth;
+        canvas.height = videoPreview.videoHeight;
+        const context = canvas.getContext('2d');
+        context.drawImage(videoPreview, 0, 0, canvas.width, canvas.height);
+        const dataUrl = canvas.toDataURL('image/jpeg');
+        const imageBlob = dataURItoBlob(dataUrl);
+        const formData = new FormData();
+        formData.append('image', imageBlob);
+        fetch('/predict', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json())
+        .then(result => {
+          console.log(result);
+          // Display prediction result
+          // ...
+        })
+        .catch(error => console.error(error));
+      });
+
+      // Helper function to convert data URI to blob
+      function dataURItoBlob(dataURI) {
+        const byteString = atob(dataURI.split(',')[1]);
+        const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+        const ab = new ArrayBuffer(byteString.length);
+        const ia = new Uint8Array(ab);
+        for (let i = 0; i < byteString.length; i++) {
+          ia[i] = byteString.charCodeAt(i);
+        }
+        return new Blob([ab], { type: mimeString });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+
+    <title>Cotton Boll Disease Classification</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .border img {
+            border-radius: 15px;
+            border: 2px solid black;
+        }
+        
+        
+
+        .card{
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            display: inline-block;
+            height: 400px;
+            width: 400px
+            
+        }
+ 
+        .card-style {
+            display: block;
+            
+      
+            
+ 
+        }
+ 
+        .content {
+            padding: 15px;
+            color:black;
+            background-color: rgb(153, 156, 150);
+            /* font-size: 1rem; */
+        }
+ 
+        @media (max-width: 430px) and (min-width: 200px) {
+ 
+            .contents {
+                font-size: 0.6rem;
+                color: chartreuse;
+            }
+ 
+            .content-h1 {
+ 
+                font-size: 1rem;
+            }
+        }
+ 
+        .border img {
+            border-radius: 15px;
+            border: 2px solid #ffbd39;
+            
+        }
+		
+    </style>
+</head>
+
+<body background="{{url_for('static',filename = 'images/back.png')}}">
+
+
+
+    <div>
+        <h1 style="text-align:center;font-size:4rem">Predicted Disease and Remedies</h1>
+    </div>
+
+   <br>
+   <br>
+
+
+    <div class="container my-2">
+        <div class="row mb-5">
+
+            <div class="col-sm" style="margin-bottom: 23px;">
+                <span class="border border-primary">
+                    <img src="{{url_for('static',filename = 'images/Bacterial_Blight(9).jpg' )}}" alt="User Image" style="width:500px;height:500px;">
+                    
+
+                </span>
+            </div>
+
+            <div class="col-sm">
+
+                <div>
+                    <h1 style="padding: 15px; background-color: white; color:royalblue;"
+                        class="text-center mb-5 content-h1 rounded">
+                        {{pred_output}} </h1>
+                </div>
+                <div class="details">
+                    <h6>
+                        Bacterial blight is a disease caused by the bacterium , Xanthomonas citri pv.It starts as small , water-soaked lesions on the cotton bolls.The lesions of bacterial blight are triangular or rectangular.Bacterial blight lesions may appear on the upper leaf surface and the water soaked or greasy appearance of the lesions is often most clearly observed on the under surface of the cotton boll.Bacterial Blight maybe caused also by infected crop residue from previous season or be introduced by infected seeds.Infections maybe spread by wind-driven rain from an infested <br></br>
+    
+                    </h6>
+                    <h4><b> Treatment : </b> </h4>
+                    <ul>
+                        <li>Destroy weeds or other pre-plant vegetation by tillage or herbicide application three or more weeks in advance of planting.</li>
+                        <li>Plant during the recommended window when possible</li>
+                        <li>use short or medium maturing varieties.</li>
+                        <li> Use drip irrigation and avoid watering foliage.</li>
+                    </ul>
+                </div>
+                </div>
+                
+                <div class="card-columns">
+                    <div class="card">
+                        <div class="card-body text-center card-style">
+                            <h3>Recommended Products</h3>
+                            <img style="border-radius: 10px; height: 200px;" class="img-fluid" src="ulala.png" alt="">
+                            <h5 style="color: black;">Dose: 25-40 gm/Acre</h5>
+                            <p style="color: black">Flonicamid 50% (Ulala) a systemic insecticide for controling the bacterium With the widest spectrum and longest duration of control.</p>
+                    
+                        </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

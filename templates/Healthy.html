@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+
+    <title>Cotton Boll Disease Classification</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .border img {
+            border-radius: 15px;
+            border: 2px solid black;
+        }
+		
+    </style>
+</head>
+
+<body background="{{url_for('static',filename = 'images/back.png')}}">
+
+
+
+    <div>
+        <h1 style="text-align:center;font-size:4rem">Predicted Disease and Remediess</h1>
+    </div>
+
+   <br>
+   <br>
+
+
+    <div class="container my-2">
+        <div class="row mb-5">
+
+            <div class="col-sm" style="margin-bottom: 23px;">
+                <span class="border border-primary">
+                    <img src="{{url_for('static',filename = 'images/Healthy(4).jpg' )}}" alt="User Image" style="width:500px;height:500px;">
+                    
+
+                </span>
+            </div>
+
+            <div class="col-sm">
+
+                <div>
+                    <h1 style="padding: 15px; background-color: white; color:green;"
+                        class="text-center mb-5 content-h1 rounded">
+                        {{pred_output}} </h1>
+                </div>
+                <div class="details">
+					
+					<h4><b>Healthy Cotton Boll</b> <br></h4>
+                    <h4>To keep the cotton bolls healthy,follow these recommendations:</h4>
+                    <ul>
+                        <li>Water the cotton plants regularly and deeply, but avoid overwatering or flooding them.</li>
+                        <li>Apply balanced fertilizers and organic matter to improve soil quality and nutrient availability.                 </li>
+                        <li> Monitor and control pests and diseases that can damage the bolls and reduce yield.</li>
+                        <li> Harvest the bolls when they are fully mature and dry, and store them in a cool and dry place.</li>
+                    </ul>
+               
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

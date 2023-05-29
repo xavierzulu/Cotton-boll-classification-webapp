@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+
+    <title>Cotton boll diseases Classification</title>
+
+    <style>
+          * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .border img {
+            border-radius: 15px;
+            border: 2px solid black;
+        }
+        
+        
+
+        .card{
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            display: inline-block;
+            height: 400px;
+            width: 400px
+            
+        }
+ 
+        .card-style {
+            display: block;
+            
+      
+            
+ 
+        }
+ 
+        .content {
+            padding: 15px;
+            color:black;
+            background-color: rgb(153, 156, 150);
+            /* font-size: 1rem; */
+        }
+ 
+        @media (max-width: 430px) and (min-width: 200px) {
+ 
+            .contents {
+                font-size: 0.6rem;
+                color: chartreuse;
+            }
+ 
+            .content-h1 {
+ 
+                font-size: 1rem;
+            }
+        }
+ 
+        .border img {
+            border-radius: 15px;
+            border: 2px solid #ffbd39;
+        }
+		
+    </style>
+</head>
+
+<body background="{{url_for('static',filename = 'images/back.png')}}">
+
+
+
+    <div>
+        <h1 style="text-align:center;font-size:4rem">Predicted Disease and Remedies</h1>
+    </div>
+
+   <br>
+   <br>
+
+
+    <div class="container my-2">
+        <div class="row mb-5">
+
+            <div class="col-sm" style="margin-bottom: 23px;">
+                <span class="border border-primary">
+                    <img src="{{url_for('static',filename = 'images/target_spots(3).jpg' )}}" alt="User Image" style="width:500px;height:500px;">
+                    
+
+                </span>
+            </div>
+
+            <div class="col-sm">
+
+                <div>
+                    <h1 style="padding: 15px; background-color: white; color:yellow;"
+                        class="text-center mb-5 content-h1 rounded">
+                        {{pred_output}} </h1>
+                </div>
+                <div class="details">
+					
+					
+                    <h6>
+					Target spots is a fungal disease that affects the cotton boll whhich is caused by Corynespora cassiicola.
+                    It can cause brown lesions.Target spot can reduce cotton yield in severe cases, especially in humid and rainy conditions.
+					<br>
+					<br>
+                    <h4><b> Treatment : </b> </h4>
+                    <ul>
+                        <li>growers can use resistant or tolerant cultivars.</li>
+                        <li>apply fungicides such as Headline or Quadris during the third and fifth weeks of bloom.</li>
+                        <li>Fungicides should be applied with drop-nozzles to reach the interior of the canopy, where the disease is most prevalent.</li>
+                    </ul>
+
+                    </h6>
+                </div>
+            </div>
+        </div>
+        <div class="card ">
+            <div class="card-body text-center card-style">
+                <h3>Recommended Products</h3>
+                <img style="border-radius: 10px; height: 200px;" class="img-fluid" src="victor.png" alt="">
+                <h5 style="color: black;">Dose: 25-35 ml/Acre</h5>
+                <p style="color: black;">It helps for treating crops against fungal. While contact mode of action it effectively controls a broad spectrum of fungus in their various stages of growth.</p>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>
